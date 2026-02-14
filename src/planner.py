@@ -3,6 +3,7 @@ from utils.logging import get_logger
 import json
 import os
 from dotenv import load_dotenv
+from models.llms import GroqModel
 
 
 logger = get_logger("Planner")
@@ -11,13 +12,9 @@ logger = get_logger("Planner")
 class QueryPlanner:
     def __init__(self, model: str = "llama-3.1-8b-instant"):
         load_dotenv()
-
-        api_key = os.getenv("GROQ_API_KEY")
-        if not api_key:
-            raise RuntimeError("GROQ_API_KEY not set")
-
-        self.client = Groq(api_key=api_key)
-        self.model = model
+        groqmodel = GroqModel(model)
+        self.client = groqmodel.client
+        self.model = groqmodel.model
 
 
 

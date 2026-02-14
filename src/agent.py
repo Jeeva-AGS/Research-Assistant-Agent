@@ -84,8 +84,8 @@ def run(query: str):
 
 
 
-if __name__ == "__main__":
-    run("Heart disease")
+# if __name__ == "__main__":
+#     run("Heart disease")
 
 
 

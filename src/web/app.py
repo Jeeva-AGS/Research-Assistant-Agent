@@ -2,7 +2,6 @@ import streamlit as st
 import sys
 import os
 
-# Make src importable
 sys.path.append(os.path.abspath(os.path.join(__file__, "../../")))
 
 from agent import run

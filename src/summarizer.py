@@ -2,20 +2,16 @@ import os
 from groq import Groq
 from dotenv import load_dotenv
 from utils.logging import get_logger
-
+from models.llms import GroqModel
+load_dotenv()
 logger = get_logger("Summarizer")
 
 
 class ResearchSummarizer:
-    def __init__(self, model: str = "llama-3.1-8b-instant"):
-        load_dotenv()
-
-        api_key = os.getenv("GROQ_API_KEY")
-        if not api_key:
-            raise RuntimeError("GROQ_API_KEY not set")
-
-        self.client = Groq(api_key=api_key)
-        self.model = model
+    def __init__(self, model: str = "llama-3.1-8b-instant"):   
+        groqmodel = GroqModel(model)
+        self.client = groqmodel.client
+        self.model = groqmodel.model
 
     def summarize(self, query: str, chunks: list[dict]):
         """

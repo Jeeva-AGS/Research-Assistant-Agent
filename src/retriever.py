@@ -1,10 +1,15 @@
 import requests
 from typing import List, Dict
 from utils.logging import get_logger
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
 logger = get_logger("Retriever")
 
-ARXIV_API_URL = "http://export.arxiv.org/api/query"
+ARXIV_API_URL = os.getenv("ARXIV_API_URL")
+if not ARXIV_API_URL:
+    raise RuntimeError("ARXIV_API_URL not set")
 
 
 class ArxivRetriever:
@@ -28,6 +33,12 @@ class ArxivRetriever:
             "max_results": self.max_results,
             "sortBy": "relevance",
         }
+#         headers = {
+#     "User-Agent": "ResearchAssistantAgent/1.0 (contact: jj@gmail.com)"
+# }
+
+        # response = requests.get(ARXIV_API_URL, params=params, headers=headers, timeout=10)
+
 
 
         response = requests.get(ARXIV_API_URL, params=params, timeout=10)
@@ -57,11 +68,3 @@ class ArxivRetriever:
 
         logger.info(f"Retrieved {len(papers)} papers from arXiv")
         return papers
-
-
-# if __name__ == "__main__":
-#     retriever = ArxivRetriever(max_results=3)
-#     results = retriever.fetch("Football Rules and Regulations")
-
-#     for paper in results:
-#         print(paper["title"])

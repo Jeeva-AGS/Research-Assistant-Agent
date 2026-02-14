@@ -17,10 +17,6 @@ venv/
 .venv/
 agent/
 pip-wheel-metadata/
-
-# ========================
-# ML / Embeddings / Vector DB
-# ========================
 *.bin
 *.pt
 *.onnx
@@ -30,27 +26,11 @@ pip-wheel-metadata/
 vector_store/
 chroma/
 faiss_index/
-
-# ========================
-# Logs
-# ========================
 logs/
 *.log
-
-# ========================
-# Streamlit
-# ========================
 .streamlit/secrets.toml
-
-# ========================
-# OS / Editor
-# ========================
 .DS_Store
 Thumbs.db
 .vscode/
 .idea/
-
-# ========================
-# Jupyter
-# ========================
 .ipynb_checkpoints/
