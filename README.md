@@ -1,20 +1,22 @@
 # Personal Research Assistant Agent
 
-An end-to-end **Agentic AI system** that accepts a research query, retrieves relevant academic papers, semantically analyzes them, and produces a **structured research report** using Large Language Models.
+An end-to-end **Agentic AI research system** that takes a user query, retrieves relevant academic papers from arXiv, semantically analyzes them, and generates a **well-structured research report** using Large Language Models (LLMs).
 
-The system is designed with **production-grade modularity**, streaming outputs, and a clean separation of concerns.
+This project demonstrates a complete research automation pipeline - from intelligent query planning to final synthesized report generation — accessible through an interactive Streamlit interface.
 
 ---
 
-## ✨ Features
+## Overview
 
-- Intelligent query planning
-- Academic paper retrieval (arXiv)
-- Chunking + semantic embeddings
-- Vector-based retrieval
-- LLM-powered synthesis
-- Token-by-token streaming output
-- Interactive Streamlit UI with live progress updates
+The Personal Research Assistant Agent automates the research workflow:
+
+1. Understands and refines a research query  
+2. Retrieves relevant academic papers from arXiv  
+3. Processes and chunks retrieved documents  
+4. Generates semantic embeddings  
+5. Performs vector-based retrieval  
+6. Synthesizes findings using an LLM  
+7. Streams a structured research report in real-time 
 
 ---
 
@@ -37,30 +39,35 @@ Semantic Retrieval
    ↓
 LLM Summarizer (Streaming)
    ↓
-UI Output
+Structured Research Report (UI)
+```
 
+## Project Structure
 
-# 📁 Project Structure
-
+```
 src/
-├── agent.py                # Orchestrates the full research pipeline
-├── planner.py              # Converts user query into search strategy
-├── retriever.py            # Fetches papers from arXiv
-├── summarizer.py           # LLM-based research synthesis (streaming)
+├── agent.py
+├── planner.py 
+├── retriever.py 
+├── summarizer.py
+├── .gitignore
+├── README.md
+├── Dockerfile
+├── .dockerignore
 │
 ├── models/
-│   └── embeddings/
-│       └── embedding_model.py
+│   └── llms.py
+│   └── embeddings.py
 │
 ├── utils/
-│   ├── chunking.py         # Text chunking logic
-│   ├── vector_store.py     # In-memory vector storage
-│   └── logging.py          # Centralized logging
+│   ├── chunking.py
+│   ├── vector_store.py
+│   └── logging.py
 │
 └── web/
-    └── app.py              # Streamlit UI
+    └── app.py
 
-
+```
 
 ## Getting Started
 
@@ -69,17 +76,26 @@ src/
 ```bash
 git clone <repository-url>
 cd personal-research-assistant
-
+```
 
 ### 2. Create and activate a virtual environment
+```
 python -m venv venv
-source venv/bin/activate     # Windows: venv\Scripts\activate
+source venv/bin/activate
+```
 
 ### 3. Install dependencies
+```
 pip install -r requirements.txt
+```
 
 ### 4. Set environment variables
+```
 GROQ_API_KEY=your_groq_api_key_here
+ARXIV_API_URL=http://export.arxiv.org/api/query
+```
 
-### 4. Running the Application
+### 5. Running the Application
+```
 streamlit run src/web/app.py
+```
