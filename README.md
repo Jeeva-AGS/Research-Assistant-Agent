@@ -99,3 +99,17 @@ ARXIV_API_URL=http://export.arxiv.org/api/query
 ```
 streamlit run src/web/app.py
 ```
+
+---
+
+# How to get Required Keys
+
+##  Groq API Key
+
+1. Go to https://console.groq.com
+2. Create an account or log in.
+3. Go to "API Keys".
+4. Click "Generate Key".
+5. Copy the key.
+6. Add it to your .env file:
+   GROQ_API_KEY=your_groq_api_key_here
