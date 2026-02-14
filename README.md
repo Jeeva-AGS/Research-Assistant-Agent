@@ -2,7 +2,7 @@
 
 An end-to-end **Agentic AI research system** that takes a user query, retrieves relevant academic papers from arXiv, semantically analyzes them, and generates a **well-structured research report** using Large Language Models (LLMs).
 
-This project demonstrates a complete research automation pipeline - from intelligent query planning to final synthesized report generation — accessible through an interactive Streamlit interface.
+This project demonstrates a complete research automation pipeline - from intelligent query planning to final synthesized report generation - accessible through an interactive Streamlit interface.
 
 ---
 
