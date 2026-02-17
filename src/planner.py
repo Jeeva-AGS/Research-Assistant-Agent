@@ -22,17 +22,38 @@ class QueryPlanner:
         logger.info(f"Planning search strategy for query: {query}")
 
         prompt = f"""
-You are a research assistant.
+You are a research query normalization engine.
+Your task is to extract the core research topic from a user’s natural language input
+and convert it into a concise, academic-style search query.
 
-Given a user research query, return a JSON object with exactly these keys:
-- refined_query (string)
-- keywords (array of strings)
+Rules:
+- Ignore conversational phrases (e.g., "I want to research", "can you help me", "tell me about")
+- Identify the main research concept only
+- Do NOT add new concepts
+- Keep the refined query short and search-friendly
+- Do NOT use markdown or code fences
 
-Do not include explanations.
-Do not include markdown.
+Return a JSON object with EXACTLY these keys:
+- refined_query: a short academic-style topic (string)
+- keywords: a list of important domain keywords (array of strings)
+
+Example:
+
+User input:
+"I want to research about heart disease"
+
+Output:
+{{
+  "refined_query": "heart disease",
+  "keywords": ["heart disease", "cardiovascular disease"]
+}}
+
 Return valid JSON only.
+No explanations.
+No markdown.
 
-User query: "{query}"
+User input:
+"{query}"
 """
 
 
